@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block meta_author %}'{{object.meta_author}}'{% endblock %}
+{% block meta_description %}'{{object.meta_description}}'{% endblock %}
+{% block meta_keywords %}'{{object.meta_keywords}}'{% endblock %}
+
+{% block meta_og_url %}'{{object.meta_url}}'{% endblock %}
+{% block meta_og_title %}'{{object.title}}'{% endblock %}
+{% block meta_og_description %}'{{object.meta_description}}'{% endblock %}
+{% block meta_og_site %}'{{object.meta_url}}'{% endblock %}
+{% block meta_og_image %}'{{object.meta_image}}'{% endblock %}
+{% block meta_og_imagealt %}'{{object.meta_description}}'{% endblock %}
+
+{% block meta_twitter_image %}'{{object.meta_image}}'{% endblock %}
+{% block meta_twitter_imagealt %}'{{object.meta_description}}'{% endblock %}
+{% block meta_twitter_site %}'{{object.meta_twitter}}'{% endblock %}
+{% block meta_twitter_creator %}'{{object.meta_twitter}}'{% endblock %}
+
+{% block title %}{{object.title}}{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block header_title %}{{object.title}}{% endblock %}
+
+{% block content %}
+    {% load render_article %}
+    {% load created_at_dt %}
+    {% load up_views %}
+    {% load cta_location %}
+    {% replace_date object.created_at as dt %}
+    {% render_article object.body as body_text %}
+    {% increment object as views %}
+    {% render_article object.cta.body as cta %}
+    {% position object.cta.location as location %}
+        {% block article_content %}
+
+        {% if location == "top" %}
+            {{ cta }}
+        {% endif %}
+
+        {% block article_body %}
+        {% endblock %}
+
+        {% if location == "bottom" %}
+            {{ cta }}
+        {% endif %}
+
+        {% if location == "pop-up" %}
+            {% load static %}
+            <script src="{% static 'socialtutorial/popup.min.js' %}"></script>
+            <div class="modal">
+                <div class="modal-background" id = "cta-popup" onclick = "closeModal()"></div>
+                <div class="modal-content">
+                {{ cta }}
+                </div>
+                <button class="modal-close is-large" onclick = "closeModal()" aria-label="close"></button>
+            </div>
+        {% endif %}
+        
+
+        {% endblock %}
+{% endblock %}
+
+{% block has_email %}
+{% endblock %}

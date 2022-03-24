@@ -1,0 +1,13 @@
+.crevasse {
+    --primary: #2bd1d4;
+    --hover: #148e90;
+    --strong-icon: var(--primary);
+    --secondary: hsl(189, 29%, 70%);
+    --dark-back: hsl(199, 100%, 10%);
+    --dark: #252737;
+    --alert-back: hsl(33, 96%, 48%);
+    --alert: hsl(64, 45%, 78%);
+    --alert-dark: hsl(8, 65%, 50%);
+    --success: hsl(121, 21%, 87%);
+    --success-back: hsl(156, 35%, 43%);
+}

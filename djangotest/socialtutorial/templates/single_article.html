@@ -1,0 +1,23 @@
+{% extends 'article.html' %}
+
+{% if object.video is not '' %}
+{% block has_video %}
+{% endblock %}
+{% endif %}
+
+{% block article_body %}
+
+{{object.title}}
+
+{{body_text}}
+<a class="button primary" href="/index">Home</a>
+<p class="timeago" datetime="{{dt}}"></p>
+Views: {{ views }}
+
+<div class="tags are-medium dark">
+    {% for tag in object.tags.all %}
+        <a href="{{ tag.get_absolute_url }}"><span class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
+    {% endfor %}
+</div>
+
+{% endblock %}

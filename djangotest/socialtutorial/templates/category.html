@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block has_stripe %}
+{% endblock %}
+
+{% block has_email %}
+{% endblock %}
+
+{% block has_video %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block header_title %}Articles in category: <span style = "color:var(--secondary);">{{object.display}}</span>{% endblock %}
+
+{% block content %}
+    {% for article in articles  %}
+        {% if article.published %}
+            {% load render_article %}
+            {% load article_snippet %}
+            {% make_snippet article.body as snippet %}
+            {% render_article snippet as body_text %}
+            <a href="{{ article.get_absolute_url }}">
+                <div class="card">
+                    <div class="card-content">{{article.title}} {{body_text}}
+                    </div>
+
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+    {% for article in products  %}
+    {% if article.published %}
+        {% load render_article %}
+        {% load article_snippet %}
+        {% make_snippet article.body as snippet %}
+        {% render_article snippet as body_text %}
+        <a href="{{ article.get_absolute_url }}">
+            <div class="card">
+                <div class="card-content">{{article.title}} {{body_text}}
+                </div>
+
+            </div>
+        </a>
+    {% endif %}
+{% endfor %}
+{% endblock %}
