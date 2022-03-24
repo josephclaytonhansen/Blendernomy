@@ -39,6 +39,7 @@ function lightModeNoFlash() {
 }
 
 window.addEventListener("scroll", function () {
+    console.log(this.scrollY);
     if (this.scrollY > 20) {
         document.getElementsByClassName("topnav")[0].style.height = 50 + "px";
         document.getElementById("n-panel").style.top = 60 + "px";
@@ -53,6 +54,12 @@ window.addEventListener("scroll", function () {
             s.style.opacity = 0;
             s.style.fontSize = "0px";
         });
+    }
+    if (this.scrollY > 690){
+        this.document.getElementsByClassName("share-buttons")[0].style.position = "fixed";
+        this.document.getElementsByClassName("share-buttons")[0].style.top = "20px";
+    } else {
+        this.document.getElementsByClassName("share-buttons")[0].style.position = "relative";
     }
 })
 
@@ -84,4 +91,16 @@ function showTopNav() {
             s.style.fontSize = "0px";
         });
     }
+}
+
+function reddit(){
+    window.location.href = "https://www.reddit.com/submit?url="+window.location.href;
+}
+
+function twitter(){
+    window.location.href = "https://twitter.com/intent/tweet?url="+window.location.href;
+}
+
+function email(){
+    window.location.href = "mailto:?body="+window.location.href;
 }

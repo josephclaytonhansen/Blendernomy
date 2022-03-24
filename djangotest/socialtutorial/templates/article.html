@@ -16,11 +16,11 @@
 {% block meta_twitter_site %}'{{object.meta_twitter}}'{% endblock %}
 {% block meta_twitter_creator %}'{{object.meta_twitter}}'{% endblock %}
 
-{% block title %}{{object.title}}{% endblock %}
+{% block title %}{{object.title}} - Blendernomy{% endblock %}
 
 {% block header %}
 {% endblock %}
-{% block header_title %}{{object.title}}{% endblock %}
+{% block header_title %}<h1 style = "cursor:pointer" onclick = "home()" <h1 class= "is-light">BLENDER<span class = "highlighted">NOMY</span></h1>{% endblock %}
 
 {% block content %}
     {% load render_article %}

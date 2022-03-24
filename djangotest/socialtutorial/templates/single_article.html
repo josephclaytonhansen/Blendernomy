@@ -1,23 +1,56 @@
 {% extends 'article.html' %}
 
-{% if object.video is not '' %}
-{% block has_video %}
-{% endblock %}
-{% endif %}
-
 {% block article_body %}
+{% load created_at_dt %}
+{% replace_date object.created_at as dt %}
 
-{{object.title}}
+<div class="article-hero columns is-mobile no-margin">
+    <div class="column is-3" style="padding:0px;min-width:200px;">
+        <div class="article-hero-image" style="background-image:url({{object.meta_image.url}});"></div>
+    </div>
 
-{{body_text}}
-<a class="button primary" href="/index">Home</a>
-<p class="timeago" datetime="{{dt}}"></p>
-Views: {{ views }}
-
-<div class="tags are-medium dark">
-    {% for tag in object.tags.all %}
-        <a href="{{ tag.get_absolute_url }}"><span class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
-    {% endfor %}
+    <div class="column is-7 vertical-center-left" style="">
+        <h1 class="is-light article-hero-h1 article-hero-text">{{object.title}}</h1>
+        <h4 class="subtitle article-hero-text timeago" datetime="{{dt}}"></h4>
+    </div>
 </div>
+
+<div class="columns">
+    <div class="column is-3">
+        <div style="padding:30px;">
+            <div class="tags are-medium dark" style="margin-top:0;padding-top:0;">
+                {% for tag in object.tags.all %}
+                <a href="{{ tag.get_absolute_url }}"><span
+                        class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
+                {% endfor %}
+            </div>
+            <div class="spacer is-small"></div>
+            <p><em>{{ views }} views</em></p>
+            <div class = "vertical-center-left share-buttons" style = "margin-top:10px;">
+                {% load static %}
+                <h4 class = "subtitle no-margin">Share:</h4>
+                <a class = "button" style = "background-color:#FF4500;color:white;" onclick = "reddit()">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/reddit-32.png' %}"></span><span style = "padding-left:4px;">Reddit</span>
+                </a>
+                <a class = "button" style = "background-color:#1D9BF0;color:white;" onclick = "twitter()">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/twitter-32.png' %}"></span><span style = "padding-left:4px;">Twitter</span>
+                </a>
+                <a class = "button" style = "background-color:#B7081B;color:white;" href = "//www.pinterest.com/pin/create/button/">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/pinterest-32.png' %}"></span><span style = "padding-left:4px;">Pinterest</span>
+                </a>
+                <a class = "button" style = "background-color:#539D83;color:white;" onclick = "email()">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/telegram-2-32.png' %}"></span><span style = "padding-left:4px;">Email</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-6 is-full-mobile">
+        {{body_text}}
+    </div>
+</div>
+
+
 
 {% endblock %}
