@@ -6,7 +6,9 @@
 
 <div class="article-hero columns is-mobile no-margin">
     <div class="column is-3" style="padding:0px;min-width:200px;">
-        <div class="article-hero-image" style="background-image:url({{object.meta_image.url}});"></div>
+        {% if object.meta_image.url is not "" %}
+            <div class="article-hero-image" alt = "{{object.meta_description}}" style="background-image:url({{object.meta_image.url}});"></div>
+        {% endif %}
     </div>
 
     <div class="column is-7 vertical-center-left" style="">
@@ -21,6 +23,10 @@
             <div class="tags are-medium dark" style="margin-top:0;padding-top:0;">
                 {% for tag in object.tags.all %}
                 <a href="{{ tag.get_absolute_url }}"><span
+                        class="tag is-clickable is-unselectable primary">{{tag.display}}</span></a>
+                {% endfor %}
+                {% for tag in object.supertags.all %}
+                <a href="{{ tag.get_absolute_url }}"><span
                         class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
                 {% endfor %}
             </div>
@@ -30,16 +36,16 @@
                 {% load static %}
                 <h4 class = "subtitle no-margin">Share:</h4>
                 <a class = "button" style = "background-color:#FF4500;color:white;" onclick = "reddit()">
-                    <span class="icon"><img src = "{% static 'socialtutorial/images/reddit-32.png' %}"></span><span style = "padding-left:4px;">Reddit</span>
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/reddit-32.png' %}" alt = "reddit logo"></span><span style = "padding-left:4px;">Reddit</span>
                 </a>
                 <a class = "button" style = "background-color:#1D9BF0;color:white;" onclick = "twitter()">
-                    <span class="icon"><img src = "{% static 'socialtutorial/images/twitter-32.png' %}"></span><span style = "padding-left:4px;">Twitter</span>
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/twitter-32.png' %}" alt = "twitter logo"></span><span style = "padding-left:4px;">Twitter</span>
                 </a>
                 <a class = "button" style = "background-color:#B7081B;color:white;" href = "//www.pinterest.com/pin/create/button/">
-                    <span class="icon"><img src = "{% static 'socialtutorial/images/pinterest-32.png' %}"></span><span style = "padding-left:4px;">Pinterest</span>
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/pinterest-32.png' %}" alt = "Pinterest logo"></span><span style = "padding-left:4px;">Pinterest</span>
                 </a>
                 <a class = "button" style = "background-color:#539D83;color:white;" onclick = "email()">
-                    <span class="icon"><img src = "{% static 'socialtutorial/images/telegram-2-32.png' %}"></span><span style = "padding-left:4px;">Email</span>
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/telegram-2-32.png' %}" alt = "get link icon"></span><span style = "padding-left:4px;">Email</span>
                 </a>
 
             </div>

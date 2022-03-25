@@ -192,13 +192,15 @@
                     </div>
                     <div class = "column">
                         <nav class="menu">
-                            <p class="menu-label">SECTION</p>
+                            <p class="menu-label">NAVIGATION</p>
                             <ul class="menu-list">
-                                <li><a>Link</a></li>
-                                <li><a>Another Link</a></li>
-                                <p class="menu-label">OTHER SECTION</p>
-                                <li><a>Third Link</a></li>
-                                <li><a>Last link</a></li>
+                                <li><a>Home</a></li>
+                                <li><a>Contact</a></li>
+                                <p class="menu-label">ARTICLES</p>
+                                <li><a href = "/articles">All articles</a><li>
+                                {% for tag in tags %}
+                                    <li><a href = "{{tag.get_absolute_url}}">{{tag.display}}</a></li> 
+                                {% endfor %}
                             </ul>
                         </nav>  
                     </div>
@@ -379,7 +381,6 @@
     {% endblock %}
 
     {% block has_stripe %}
-        <script src = "https://js.stripe.com/v3" defer async></script>
     {% endblock %}
 
     {% block has_video %}

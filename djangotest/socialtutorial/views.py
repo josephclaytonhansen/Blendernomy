@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView, FormView, TemplateView
 from django.utils.decorators import method_decorator
-from .models import Article, DigitalProduct, Tag, ProductKey, FeaturedVideo
+from .models import Article, DigitalProduct, Tag, ProductKey, FeaturedVideo, SuperTag
 from ratelimit.decorators import ratelimit
 from datetime import timedelta
 from blacklist.ratelimit import blacklist_ratelimited
@@ -95,6 +95,19 @@ class TagView(DetailView):
         context = super(TagView, self).get_context_data(**kwargs)
         context['articles'] = Article.objects.filter(tags=self.object)
         context['products'] = DigitalProduct.objects.filter(tags=self.object)
+        context['object'] = self.object
+        return context
+    
+@method_decorator(ratelimit(key='ip', rate = '30/m', block=False), name="dispatch")
+@method_decorator(ratelimit(key='ip', rate = '100/20m', block=False), name="dispatch")
+@method_decorator(ratelimit(key='ip', rate = '800/d', block=False), name="dispatch")
+@method_decorator(blacklist_ratelimited(timedelta(minutes=20)), name="dispatch")   
+class SuperTagView(DetailView):
+    model = SuperTag
+    template_name = "category.html"
+    def get_context_data(self, **kwargs):
+        context = super(SuperTagView, self).get_context_data(**kwargs)
+        context['articles'] = Article.objects.filter(supertags=self.object)
         context['object'] = self.object
         return context
 

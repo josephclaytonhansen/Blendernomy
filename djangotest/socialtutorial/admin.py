@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group, User
 # Register your models here.
 
-from.models import Author, Article, FeaturedVideo, Tag, CTA, Banner, DigitalProduct, ProductKey, SheepFrame
+from.models import Author, Article, FeaturedVideo, Tag, CTA, Banner, DigitalProduct, ProductKey, SheepFrame, SuperTag
 class AuthorInline(admin.StackedInline):
     model = Author
 
@@ -54,6 +54,12 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('tag','display',)
     list_editable = ('display',)
     list_display_links = ('tag',)
+    
+class SuperTagAdmin(admin.ModelAdmin):
+    model = SuperTag
+    list_display = ('tag','display',)
+    list_editable = ('display',)
+    list_display_links = ('tag',)
 
 class BannerAdmin(admin.ModelAdmin):
     model = Banner
@@ -90,6 +96,7 @@ admin.site.register(Article, ArticleAdmin)
 admin.site.register(DigitalProduct, ProductAdmin)
 admin.site.register(ProductKey, KeyAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(SuperTag, SuperTagAdmin)
 admin.site.register(CTA, CtaAdmin)
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(SheepFrame, FramesAdmin)

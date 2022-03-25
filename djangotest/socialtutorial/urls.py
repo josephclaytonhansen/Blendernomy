@@ -3,7 +3,7 @@
 from django.urls import path, include
 from .views import (dashboard, test, old_admin, page_not_found, article_random,
 ArticleView, ArticleList, TagView, ContactView, ContactSuccessView, ProductView,
-KeyValidatorView, PurchaseView)
+KeyValidatorView, PurchaseView, SuperTagView)
 from django.conf.urls import handler404
 from django.contrib.staticfiles.urls import static
 from django.conf import settings
@@ -18,6 +18,7 @@ urlpatterns = [
     path("random", article_random, name="article_random"),
     path('<slug:slug>/', ArticleView.as_view(), name='article'),
     path('tag/<slug:slug>', TagView.as_view(), name='tag'),
+    path('child-tag/<slug:slug>', SuperTagView.as_view(), name='supertag'),
     path('product/<slug:slug>', ProductView.as_view(), name='product'),
     path('g/<slug:slug>', PurchaseView, name='purchaseview'),
     path("admin", old_admin, name = "old_admin"),

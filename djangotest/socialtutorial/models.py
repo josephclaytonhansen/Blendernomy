@@ -31,6 +31,21 @@ class Tag(models.Model):
         if self.display == '':
             self.display = self.tag
         super(Tag, self).save(*args, **kwargs)
+        
+
+class SuperTag(models.Model):
+    tag = models.CharField(max_length=256)
+    display = models.CharField(max_length=256,default='',blank=True)
+    slug = models.SlugField(default='',blank=True)
+    def __str__(self):
+        return self.tag
+    def get_absolute_url(self):
+        return reverse('socialtutorial:supertag', kwargs={'slug': self.slug})
+    def save(self, *args, **kwargs):
+        self.slug = self.tag
+        if self.display == '':
+            self.display = self.tag
+        super(SuperTag, self).save(*args, **kwargs)
 
 class CTA(models.Model):
     title = models.CharField(max_length=256)
@@ -98,6 +113,7 @@ class Article(models.Model):
     body = models.TextField()
     video = models.CharField(max_length=1024, blank=True, default='')
     tags = models.ManyToManyField(Tag, related_name="articles")
+    supertags = models.ManyToManyField(SuperTag, related_name="articles", blank=True)
     cta = models.ForeignKey(CTA, related_name="cta", on_delete=models.DO_NOTHING)
     
     slug = models.CharField(max_length=50, unique=True)
@@ -123,18 +139,21 @@ class Article(models.Model):
             self.meta_image_alt = self.meta_description
         try:
             tags = self.tags.all()
+            supertags = self.supertags.all()
             self.meta_keywords = ""
             for t in tags:
                 self.meta_keywords += str(t.tag) + ","
+            for t in supertags:
+                self.meta_keywords += "blender " + str(t.tag) + ","
         except:
             self.meta_keywords = ""
         if self.video is None:
             self.video = ""
         super(Article, self).save(*args, **kwargs)
+        
     def get_absolute_url(self):
         return reverse('socialtutorial:purchaseview', kwargs={'slug': self.slug})
         
-    
     def __str__(self):
         if self.published:
             return (f"{self.title} - " f"{self.created_at:%B %d}" f" (PUBLISHED)")

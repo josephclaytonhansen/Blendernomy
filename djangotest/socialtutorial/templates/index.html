@@ -49,7 +49,7 @@
   {% replace_date featured2.created_at as dt2 %}
   {% replace_date featured3.created_at as dt3 %}
 
-  <div class="columns">
+  <div class="columns no-margin">
     <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
       <div class="section">
         <div class="container">
@@ -63,9 +63,14 @@
                         <h2 class="article-card-title">{{ featured2.title }}</h2>
                         <h3 class="article-card-title subtitle timeago" datetime="{{dt2}}"></h3>
                       </div>
-                      {% for tag in featured2.tags.all %}
-                      <p class="t">{{tag.display}}</p>
-                      {% endfor %}
+                      <div class = "tags" style = "max-width:60%;justify-content: flex-end;">
+                        {% for tag in featured2.tags.all %}
+                        <p class="t">{{tag.display}}</p>
+                        {% endfor %}
+                        {% for tag in featured2.supertags.all %}
+                        <p class="t">{{tag.display}}</p>
+                        {% endfor %}
+                      </div>
                     </div>
                   </div>
                   <div class="card-image">
@@ -83,9 +88,14 @@
                         <h2 class="article-card-title">{{ featured3.title }}</h2>
                         <h3 class="article-card-title subtitle timeago" datetime="{{dt3}}"></h3>
                       </div>
-                      {% for tag in featured3.tags.all %}
-                      <p class="t">{{tag.display}}</p>
-                      {% endfor %}
+                      <div class = "tags" style = "max-width:60%;justify-content: flex-end;">
+                        {% for tag in featured3.tags.all %}
+                        <p class="t">{{tag.display}}</p>
+                        {% endfor %}
+                        {% for tag in featured3.supertags.all %}
+                        <p class="t">{{tag.display}}</p>
+                        {% endfor %}
+                      </div>
                     </div>
                   </div>
                   <div class="card-image">
@@ -106,9 +116,14 @@
                         <h2 class="article-card-title">{{ featured1.title }}</h2>
                         <h3 class="article-card-title subtitle timeago" datetime="{{dt1}}"></h3>
                       </div>
-                      {% for tag in featured1.tags.all %}
-                      <p class="t">{{tag.display}}</p>
-                      {% endfor %}
+                      <div class = "tags" style = "max-width:35%;justify-content: flex-end;">
+                        {% for tag in featured1.tags.all %}
+                        <p class="t">{{tag.display}}</p>
+                        {% endfor %}
+                        {% for tag in featured1.supertags.all %}
+                        <p class="t">{{tag.display}}</p>
+                        {% endfor %}
+                      </div>
                     </div>
                   </div>
                   <div class="card-image">
@@ -126,7 +141,7 @@
     </div>
   </div>
 
-  <div class="columns no-margin" style="background-color:var(--background-var);">
+  <div class="columns no-margin" style = "margin-top:-8rem;">
     <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
       <div class="section">
         <div class="container">
@@ -144,7 +159,7 @@
           </div>
 
           <div class="columns">
-            <div class="column is-8">
+            <div class="column is-7">
               {% for article in articles  %}
               {% load render_article %}
               {% load article_snippet %}
@@ -176,9 +191,14 @@
                       </div>
                       <div class="level-right">
                         <div class="level-item">
-                          {% for tag in article.tags.all %}
-                          <p class="t is-small">{{tag.display}}</p>
-                          {% endfor %}
+                          <div class = "tags" style = "justify-content: flex-end;">
+                            {% for tag in article.tags.all %}
+                            <p class="t is-small">{{tag.display}}</p>
+                            {% endfor %}
+                            {% for tag in article.supertags.all %}
+                            <p class="t is-small">{{tag.display}}</p>
+                            {% endfor %}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -191,7 +211,7 @@
               <a class="button big-button primary" href="/articles">MORE</a>
             </div>
 
-            <div class="column is-4">
+            <div class="column is-4 is-offset-1">
               <h2 class="is-hidden-desktop is-hidden-tablet" style="text-align:center;">Featured Videos</h2>
               <div class = "videos">
                 {% for featured_video in featured_videos %}
@@ -203,7 +223,7 @@
                 {% endfor %}
               </div>
 
-              <h2 style="text-align:right;margin-top:2rem;margin-bottom:1rem;">TAGS</h2>
+              <h2 style="text-align:right;margin-top:3rem;margin-bottom:1rem;">TAGS</h2>
               <div class="tags are-medium dark">
                 {% for tag in tags %}
                     <a href="{{ tag.get_absolute_url }}"><span class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
