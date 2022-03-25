@@ -14,19 +14,63 @@
 {% block header_title %}Articles{% endblock %}
 
 {% block content %}
-    {% for article in object_list  %}
-        {% if article.published %}
-            {% load render_article %}
-            {% load article_snippet %}
-            {% make_snippet article.body as snippet %}
-            {% render_article snippet as body_text %}
-            <a href="{{ article.get_absolute_url }}">
-                <div class="card">
-                    <div class="card-content">
-                        {{article.title}} {{body_text}}
+    <div class="columns no-margin curves1">
+        <div class="column is-10 is-offset-2 is-full-tablet is-full-mobile">
+            <div class="section">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-9">
+                            {% for article in object_list  %}
+                            {% load created_at_dt %}
+                            {% if article.published %}
+                            {% replace_date article.created_at as dt %}
+                            <a href="{{ article.get_absolute_url }}">
+                                <div class="card">
+                                    <div>
+                                        <div class="level is-mobile no-margin">
+                                            <div class="level-left">
+                                                <div class="level-item" style="padding:1.5rem;">
+                                                    <h3>{{article.title}}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="level-right">
+                                                {% if article.meta_image.url is not "" %}
+                                                <img src="{{article.meta_image.url}}" alt = "{{article.meta_description}}"
+                                                    style="border-radius:0 .25rem .25rem 0">
+                                                {% endif %}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spacer is-medium"></div>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
+                    {% if page_obj.has_other_pages %}
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+
+                            {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
                 </div>
-            </a>
-        {% endif %}
-    {% endfor %}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

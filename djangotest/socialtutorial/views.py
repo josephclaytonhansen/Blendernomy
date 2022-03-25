@@ -65,7 +65,7 @@ def article_random(request):
     import random
     articles = list(Article.objects.all().filter(published=True))
     article = random.choice(articles)
-    return render(request, "article_random.html", {"article": article})
+    return render(request, "article_random.html", {"object": article})
 
 @method_decorator(ratelimit(key='ip', rate = '30/m', block=False), name="dispatch")
 @method_decorator(ratelimit(key='ip', rate = '100/20m', block=False), name="dispatch")

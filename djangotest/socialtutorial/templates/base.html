@@ -153,25 +153,6 @@
     {% endblock content %}
 
     {% block pagination %}
-        {% if page_obj.has_other_pages %}
-            <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                    {% endif %}
-            
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                    </span>
-            
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
-            </div>
-        {% endif %}
     {% endblock %}
 
     {% block footer %}
@@ -365,7 +346,6 @@
                 {% render_icon "{'icon':'fa-tv','id':'youtube','click':'youtube()','label':'Press Y to go to Blendernomy on Youtube'}" as icon %}{{ icon|safe }}
                 {% render_icon "{'icon':'fa-message','id':'email','click':'messageMe(window.location.href)','label':'Press E to send me a message'}" as icon %}{{ icon|safe }}
                 {% render_icon "{'icon':'fa-dice','id':'random-article','click':'randomArticle()','label':'Press A for a random article'}" as icon %}{{ icon|safe }}
-                {% render_icon "{'icon':'fa-map-location-dot','id':'navigation-menu','click':'navigationMenu()','label':'Press W for site navigation pie menu'}" as icon %}{{ icon|safe }}
                 {% render_icon "{'icon':'fa-comment-slash','id':'tooltips','click':'noTooltips()','label':'Press H to disable these tooltips'}" as icon %}{{ icon|safe }}
 
             {% block t_panels %}

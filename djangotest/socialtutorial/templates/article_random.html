@@ -1,19 +1,62 @@
 {% extends 'article.html' %}
 
-{% block content %}
-    {% load render_article %}
-    {% load created_at_dt %}
-    {% replace_date article.created_at as dt %}
-    {% render_article article.body as body_text %}
-    {% render_article article.cta.body as cta %}
-    {% block article_content %}
-        {{article.title}} 
-        {{body_text}}<p class="timeago" datetime="{{dt}}"></p>
-        <a class="button is-primary" href="/index">Home</a>
+{% block article_body %}
+{% load created_at_dt %}
+{% replace_date object.created_at as dt %}
 
-        {{ cta }}
-    {% endblock %}
-{% endblock %}
+<div class="article-hero columns is-mobile no-margin">
+    <div class="column is-3" style="padding:0px;min-width:200px;">
+        {% if object.meta_image.url is not "" %}
+            <div class="article-hero-image" alt = "{{object.meta_description}}" style="background-image:url({{object.meta_image.url}});"></div>
+        {% endif %}
+    </div>
 
-{% block has_email %}
+    <div class="column is-7 vertical-center-left" style="">
+        <h1 class="is-light article-hero-h1 article-hero-text">{{object.title}}</h1>
+        <h4 class="subtitle article-hero-text timeago" datetime="{{dt}}"></h4>
+    </div>
+</div>
+
+<div class="columns">
+    <div class="column is-3">
+        <div style="padding:30px;">
+            <div class="tags are-medium dark" style="margin-top:0;padding-top:0;">
+                {% for tag in object.tags.all %}
+                <a href="{{ tag.get_absolute_url }}"><span
+                        class="tag is-clickable is-unselectable primary">{{tag.display}}</span></a>
+                {% endfor %}
+                {% for tag in object.supertags.all %}
+                <a href="{{ tag.get_absolute_url }}"><span
+                        class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
+                {% endfor %}
+            </div>
+            <div class="spacer is-small"></div>
+            <p><em>{{ views }} views</em></p>
+            <div class = "vertical-center-left share-buttons" style = "margin-top:10px;">
+                {% load static %}
+                <h4 class = "subtitle no-margin">Share:</h4>
+                <a class = "button" style = "background-color:#FF4500;color:white;" onclick = "reddit()">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/reddit-32.png' %}" alt = "reddit logo"></span><span style = "padding-left:4px;">Reddit</span>
+                </a>
+                <a class = "button" style = "background-color:#1D9BF0;color:white;" onclick = "twitter()">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/twitter-32.png' %}" alt = "twitter logo"></span><span style = "padding-left:4px;">Twitter</span>
+                </a>
+                <a class = "button" style = "background-color:#B7081B;color:white;" href = "//www.pinterest.com/pin/create/button/">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/pinterest-32.png' %}" alt = "Pinterest logo"></span><span style = "padding-left:4px;">Pinterest</span>
+                </a>
+                <a class = "button" style = "background-color:#539D83;color:white;" onclick = "email()">
+                    <span class="icon"><img src = "{% static 'socialtutorial/images/telegram-2-32.png' %}" alt = "get link icon"></span><span style = "padding-left:4px;">Email</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-6 is-full-mobile" style= "background-color:var(--background);border-radius:.25rem;box-shadow:var(--gentle-shadow);">
+        {{body_text}}
+    </div>
+</div>
+
+
+
 {% endblock %}
