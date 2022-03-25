@@ -2,6 +2,13 @@
 window.addEventListener("DOMContentLoaded", (event) => {
     localStorage;
     sessionStorage;
+    document.querySelectorAll('input[type=submit]').forEach(function (s) {
+        s.value = "SUBMIT";
+        s.classList.add("primary");
+        s.classList.add("button");
+        s.classList.add("big-button");
+        s.style.marginLeft="94px";
+    });
     if (localStorage.getItem("color") == "dark") {
         darkModeNoFlash();
     };

@@ -704,3 +704,46 @@ footer {
     background-position-y:bottom;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='2000' height='800' preserveAspectRatio='none' viewBox='0 0 2000 800'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1154%26quot%3b)' fill='none'%3e%3cpath d='M 0%2c734 C 200%2c657.2 600%2c397 1000%2c350 C 1400%2c303 1800%2c469.2 2000%2c499L2000 800L0 800z' fill='rgba(115%2c 115%2c 115%2c 0.26)'%3e%3c/path%3e%3cpath d='M 0%2c543 C 200%2c446.4 600%2c45 1000%2c60 C 1400%2c75 1800%2c506.4 2000%2c618L2000 800L0 800z' fill='rgba(189%2c 189%2c 189%2c 0.28)'%3e%3c/path%3e%3cpath d='M 0%2c750 C 200%2c662 600%2c328.8 1000%2c310 C 1400%2c291.2 1800%2c586.8 2000%2c656L2000 800L0 800z' fill='rgba(181%2c 181%2c 181%2c 0.28)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1154'%3e%3crect width='2000' height='800' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
+
+.control p{
+    display:flex;
+    margin-bottom:1.5rem;
+    flex-wrap:wrap;
+}
+
+.control p input, .control p textarea{
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-radius: .375em;
+    color: #363636;
+    box-shadow: inset 0 .0625em .125em rgba(10,10,10,.05);
+    max-width: 100%;
+    width: 80%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid var(--background-var-light);
+    border-radius: .375em;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(.5em - 1px);
+    padding-left: calc(.75em - 1px);
+    padding-right: calc(.75em - 1px);
+    padding-top: calc(.5em - 1px);
+    position: relative;
+    vertical-align: top;
+    min-width:200px;
+}
+
+.control p label{
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+    text-align: right;
+    font-weight: 500;
+    min-width:70px;
+}

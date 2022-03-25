@@ -56,7 +56,7 @@ class ContactForm(forms.Form):
     
     name = forms.CharField(max_length=120)
     email = forms.EmailField()
-    inquiry = forms.CharField(max_length=70)
+    subject = forms.CharField(max_length=70)
     message = forms.CharField(widget=forms.Textarea)
 
     def get_info(self):
@@ -69,7 +69,7 @@ class ContactForm(forms.Form):
 
         name = cl_data.get('name').strip()
         from_email = cl_data.get('email')
-        subject = cl_data.get('inquiry')
+        subject = cl_data.get('subject')
 
         msg = f'{name} with email {from_email} said:'
         msg += f'\n"{subject}"\n\n'
@@ -80,10 +80,10 @@ class ContactForm(forms.Form):
     def send(self):
 
         subject, msg = self.get_info()
-        b = super().clean().get('email')
-        q = frog(b) 
-        key,created = ProductKey.objects.get_or_create( email=b, key=q)
-        msg = msg + q
+        #b = super().clean().get('email')
+        #q = frog(b) 
+        #key,created = ProductKey.objects.get_or_create( email=b, key=q)
+        #msg = msg + q
 
         
         send_mail(
