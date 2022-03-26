@@ -191,9 +191,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected-static')
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 STATIC_DEFAULT_ACL = 'public-read'
-STATIC_LOCATION = 'static/socialtutorial'
+STATIC_LOCATION = 'static'
 STATIC_URL = f'{AWS_S3_ENDPOINT_URL}/{STATIC_LOCATION}/'
 STATICFILES_STORAGE = 'djangotest.storage_backends.StaticStorage'
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
