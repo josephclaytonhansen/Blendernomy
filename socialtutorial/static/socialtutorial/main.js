@@ -46,7 +46,6 @@ function lightModeNoFlash() {
 }
 
 window.addEventListener("scroll", function () {
-    console.log(this.scrollY);
     if (this.scrollY > 20) {
         document.getElementsByClassName("topnav")[0].style.height = 50 + "px";
         document.getElementById("n-panel").style.top = 60 + "px";
