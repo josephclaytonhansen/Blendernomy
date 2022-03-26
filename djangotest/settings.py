@@ -33,8 +33,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 
 import os
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
-MEDIA_URL = ''
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'collected-media')
+MEDIA_URL = '/media/'
+
+PUBLIC_MEDIA_DEFAULT_ACL = 'public-read'
+PUBLIC_MEDIA_LOCATION = 'media/public'
+
+AWS_ACCESS_KEY_ID = env('BUCKETEER_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('BUCKETEER_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env('BUCKETEER_BUCKET_NAME')
+AWS_S3_REGION_NAME = env('BUCKETEER_AWS_REGION')
+AWS_DEFAULT_ACL = None
+AWS_S3_SIGNATURE_VERSION = env('S3_SIGNATURE_VERSION', default='s3v4')
+AWS_S3_ENDPOINT_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+
+MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
+DEFAULT_FILE_STORAGE = 'rn_api.utils.storage_backends.PublicMediaStorage'
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
@@ -67,6 +82,7 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_totp',
     'django_otp.plugins.otp_static',
     'whitenoise.runserver_nostatic',
+    'storages',
 ]
 
 MIDDLEWARE = [
