@@ -4,7 +4,7 @@
 {% load created_at_dt %}
 {% replace_date object.created_at as dt %}
 
-<div class="article-hero columns is-mobile no-margin">
+<div class="article-hero columns is-mobile no-margin" style="margin-bottom:4rem;">
     <div class="column is-3" style="padding:0px;min-width:200px;">
         {% if object.meta_image.url is not "" %}
             <div class="article-hero-image" alt = "{{object.meta_description}}" style="background-image:url({{object.meta_image.url}});"></div>
@@ -19,7 +19,7 @@
 
 <div class="columns">
     <div class="column is-3">
-        <div style="padding:30px;">
+        <div style="padding:30px;margin-top:-40px;">
             <div class="tags are-medium dark" style="margin-top:0;padding-top:0;">
                 {% for tag in object.tags.all %}
                 <a href="{{ tag.get_absolute_url }}"><span
