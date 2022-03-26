@@ -6,3 +6,8 @@ class PublicMediaStorage(S3Boto3Storage):
     location = settings.PUBLIC_MEDIA_LOCATION
     default_acl = settings.PUBLIC_MEDIA_DEFAULT_ACL
     file_overwrite = True
+    
+class StaticStorage(S3Boto3Storage):
+    """Used to manage static files for the web server"""
+    location = settings.STATIC_LOCATION
+    default_acl = settings.STATIC_DEFAULT_ACL
