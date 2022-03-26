@@ -102,7 +102,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangotest.wsgi.application'
+#WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 
 # Database
