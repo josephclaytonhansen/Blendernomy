@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block has_stripe %}
+{% endblock %}
+
+{% block has_email %}
+{% endblock %}
+
+{% block has_video %}
+{% endblock %}
+
+{% block cdn_resources %}
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+{% endblock %}
+
+{% block code_theme %}
+{% endblock %}
+
+{% block title %}Page not found{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block header_title %}Page not found{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <div class="content">
+            <p>This page could not be found.<p>
+        </div>
+         <a class="button is-primary" href="/index">Home</a>
+    </div>
+    {% block secret_panels %}
+    {% endblock %}
+{% endblock content %}

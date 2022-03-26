@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block has_stripe %}
+{% endblock %}
+
+{% block has_video %}
+{% endblock %}
+
+{% block has_email %}
+{% endblock %}
+
+{% block universal_js %}
+{% endblock %}
+
+{% block cdn_resources %}
+{% load static %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+{% endblock %}
+
+{% block code_theme %}
+{% endblock %}
+
+{% block title %}User rate-limited{% endblock %}
+{% block header %}
+{% endblock %}
+{% block header_title %}Temporary rate-limit in effect{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <div class="content">
+            <p>For the safety of this site, you've been blocked from making requests for a short time.</p>
+        </div>
+    </div>
+    {% block secret_panels %}
+    {% endblock %}
+{% endblock %}

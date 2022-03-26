@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'socialtutorial/images/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'socialtutorial/images/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'socialtutorial/images/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'socialtutorial/images/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'socialtutorial/images/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'socialtutorial/images/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'socialtutorial/images/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'socialtutorial/images/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'socialtutorial/images/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'socialtutorial/images/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'socialtutorial/images/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'socialtutorial/images/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'socialtutorial/images/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'socialtutorial/images/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'socialtutorial/images/ms-icon-144x144.png'%}">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content={% block meta_author %}" "{% endblock %}>
+    
+    <meta name="description" content={% block meta_description %}" "{% endblock %}>
+    
+    <meta name = "keywords" content = {% block meta_keywords %}"*,*">{% endblock %}
+    
+    <meta property="og:url" content={% block meta_og_url %}" "{% endblock %} />
+    <meta property="og:title" content={% block meta_og_title %}" "{% endblock %} />
+    <meta property="og:description" content={% block meta_og_description %}" "{% endblock %} />
+    <meta property="og:site" content={% block meta_og_site %}" "{% endblock %} />
+    <meta property="og:image" content={% block meta_og_image %}" "{% endblock %} />
+    <meta property="og:image:alt" content={% block meta_og_imagealt %}" "{% endblock %} />
+    <meta name="twitter:image" content={% block meta_twitter_image %}" "{% endblock %} />
+    <meta property="twitter:image:alt" content={% block meta_twitter_imagealt %}" "{% endblock %} />
+    <meta name="twitter:card" content={% block meta_twitter_card %}"summary_large_image"{% endblock %} />
+    <meta name="twitter:site" content={% block meta_twitter_site %}" "{% endblock %} />
+    <meta name="twitter:creator" content={% block meta_twitter_creator %}" "{% endblock %} />
+    <link rel="canonical" href="{{ CANONICAL_PATH }}" />
+
+    <title>{% block title %} Django Test {% endblock %}</title>
+
+    <meta name=”robots” content=”index, follow”>
+
+    {% block cdn_resources %}
+        <script src="https://unpkg.com/timeago.js@4.0.2/dist/timeago.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js" async defer></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="{% static 'socialtutorial/main.min.css' %}">
+        <link rel="stylesheet" href="{% static 'socialtutorial/crevasse.min.css' %}">
+        <link rel="preload" href="{% static 'socialtutorial/codeblock.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preload" href="{% static 'socialtutorial/balloon.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preload" href="{% static 'socialtutorial/secretpanels.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preload" href="{% static 'fontawesomefree/css/all.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preload" href="//fonts.googleapis.com/css?family=Overpass:400,500,600,700&display=swap&amp;lang=en)"as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    {% endblock %}
+
+</head>
+
+<body id = "lightbody" class= "crevasse">
+    {% load static %}
+
+    {% block code_theme %}
+        {% load static %}
+        {% load set_color_theme %}
+        {% set_code_theme "Nebula" as page_code_theme %}
+        <link rel="stylesheet" href="{% static page_code_theme %}">
+
+        {% load html_template %}
+        {% use_template "basic" as css_template %}
+        <link rel="stylesheet" href="{% static css_template %}">
+    {% endblock %}
+
+    {% block banner %}
+        {% load get_banner %}
+        {% load_banner as banner %}
+        {{banner}}
+    {% endblock %}
+
+        <div class = "topnav" id = "lightnav" onclick = "showTopNav()" onmouseenter="hoverTopNav()" onmouseleave="noHoverTopNav()">
+            <nav class="level is-mobile" style= "height:30px;margin-top:10px;">
+                <p class="level-item has-text-centered topnav-link">
+                <a onclick="home()">Home</a>
+                </p>
+                <p class="level-item has-text-centered topnav-link">
+                <a href="/articles">Articles</a>
+                </p>
+                <p class="level-item has-text-centered topnav-link">
+                <a href="/contact">Contact Me</a>
+                </p>
+                <p class="level-item has-text-centered topnav-link">
+                <a href="https://www.youtube.com/channel/UCimP8dIVhBrCDpJhDqZg1UQ">YouTube</a>
+                </p>
+            </nav>
+        </div>
+
+        {% block small_header %}
+            <div class="header" style = "height:15vh;margin-bottom:1rem;">
+                <div class="inner-header flex" style = "height:15vh">
+                    <h1 class= "is-light">{% block header_title %}{% endblock %}</h1>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block header %}
+        <div class="header">
+            <!--Content before waves-->
+            <div class="inner-header flex">
+                <div>
+                    <h1 class= "is-light">BLENDER<span class = "highlighted">NOMY</span></h1>
+                </div>
+            </div>
+        
+            <!--Waves Container-->
+            <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="parallax">
+                        <use xlink:href="#gentle-wave" x="48" y="0" fill="var(--background-7)" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="var(--background-5)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="var(--background-3)" />
+                        <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--background)" />
+                    </g>
+                </svg>
+            </div>
+            <!--Waves end-->
+        </div>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block pagination %}
+    {% endblock %}
+
+    {% block footer %}
+        {% block universal_js %}
+        <script src="{% static 'socialtutorial/main.min.js' %}"></script>
+        <script src="{% static 'socialtutorial/n-panel.min.js' %}"></script>
+        <script src="{% static 'socialtutorial/console-clipboard.min.js' %}"></script>
+        {% endblock %}
+
+        {% load sheepframes %}
+        {% get_frames as frames %}
+        <footer class = "footer" id = "lightfooter">
+            <section class = "container">
+                <div class = "columns">
+                    <div class = "column is-one-fifth">
+                        <img src = "{% static 'socialtutorial/images/logo.png'%}" class = "image px-2 py-2 is-clickable logo" onclick="home()" alt = "Blendernomy logo" aria-label = "Image of Blendernomy logo. Click to go to the Home page">
+                    </div>
+                    <div class = "column">
+                        <nav class="menu">
+                            <p class="menu-label">NAVIGATION</p>
+                            <ul class="menu-list">
+                                <li><a>Home</a></li>
+                                <li><a>Contact</a></li>
+                                <p class="menu-label">ARTICLES</p>
+                                <li><a href = "/articles">All articles</a><li>
+                                {% for tag in tags %}
+                                    <li><a href = "{{tag.get_absolute_url}}">{{tag.display}}</a></li> 
+                                {% endfor %}
+                            </ul>
+                        </nav>  
+                    </div>
+                    <div class = "column is-narrow">
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/Youtube-logo.webp'%}" alt = "Youtube logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">YouTube</strong><br/><small><a href ="https://www.youtube.com/channel/UCimP8dIVhBrCDpJhDqZg1UQ">Blendernomy on YouTube</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/BlenderArtists-logo.webp'%}" alt = "BlenderArtists logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">BlenderArtists Community</strong><br/><small><a href ="https://blenderartists.org/u/josephhansen/">blenderartists.org/u/josephhansen</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/Artstation-logo.webp'%}" alt = "ArtStation logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">ArtStation</strong><br/><small><a href ="https://www.artstation.com/josephhansen">artstation.com/josephhansen</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/award_framerendered_5000.webp'%}" alt = "SheepIt Render Farm logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">Sheep-It Render Farm</strong><br/><small><a href ="https://www.sheepit-renderfarm.com">{{frames}}+ Frames Rendered</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class = "column is-narrow">
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/Twitter-logo.webp'%}" alt = "Twitter logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">Twitter</strong><br/><small><a href ="https://www.twitter.com/j_claytonhansen">@j_claytonhansen</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/Instagram-logo.webp'%}" alt = "Instagram logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">Instagram</strong><br/><small><a href ="https://www.instagram.com/josephhansen_art">@josephhansen_art</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/Github-logo.webp'%}" alt = "GitHub logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">Github</strong><br/><small><a href ="https://www.github.com/josephclaytonhansen">github.com/josephclaytonhansen</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                        <article class="media">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src = "{% static 'socialtutorial/images/BlenderStackExchange-logo.webp'%}" alt = "Blender StackExchange logo">
+                            </p>
+                            </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p><strong class = "main-text-dark">Blender StackExchange</strong><br/><small><a href ="https://blender.stackexchange.com/users/82477/josephhansen">blender.stackexchange.com/users/82477</a></small></p>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <div class = "absolute-footer">
+            <section class = "container">
+                <div class = "columns">
+                    <div class = "column">
+                        <div class = "level">
+                            <div class = "level-left">
+                                <div class = "level-item">
+                                    <p><small>Copyright {{year}}</small></p>
+                                </div>
+                            </div>
+                            <div class = "level-item">
+                                <p><small><span class = "highlighted">Blender fans:</span> T and N work on this site like Blender :)</small></p>
+                            </div>
+                            <div class = "level-right">
+                                <div class = "level-item">
+                                    <p><small>Made with love by Joseph Hansen</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    {% endblock %}
+
+    {% block secret_panels %}
+        {% load fa_icon %}
+        <div id = "n-panel-arrow" aria-label="Press N to open" data-balloon-pos="left" onmouseenter="secretPanel(0)" onclick="togglePanel('n')"><p>◂</p></div>
+        <div id = "n-panel">
+            <div class="n-panel" onmouseenter="secretPanel(0)">
+                <div class = "n-panel-top">
+                    <p class = "n-panel-title">Site Information</p>
+                </div>
+                <div class = "content" style = "padding:.75rem;">
+                    <p>Welcome to Blendernomy! You can find tutorials, addons, downloads, and other content for Blender 3D here.</p>
+                    <p>This site also has web development, web design, Python, JavaScript, and other content- really, whatever I want to write about :)</p>
+                    <p>This site is a personal project. It's not backed by any commercial entity, nor is it sponsored by or affiliated with the Blender Foundation.</p>
+                </div>
+            </div>
+            {% block n_panels %}
+            {% endblock %}
+        </div>
+        <div id = "t-panel-arrow" aria-label="Press T to open" data-balloon-pos="right" onmouseenter="secretPanel(1)" onclick="togglePanel('t')"><p>▸</p></div>
+        <div id="t-panel" onmouseenter="secretPanel(1)">
+
+                {% render_icon "{'icon':'fa-sun','id':'light-mode','click':'lightMode()','label':'Press L for light mode'}" as icon %}{{ icon|safe }}
+                {% render_icon "{'icon':'fa-cloud-moon','id':'dark-mode','click':'darkMode()','label':'Press D for dark mode'}" as icon %}{{ icon|safe }}
+                {% render_icon "{'icon':'fa-tv','id':'youtube','click':'youtube()','label':'Press Y to go to Blendernomy on Youtube'}" as icon %}{{ icon|safe }}
+                {% render_icon "{'icon':'fa-message','id':'email','click':'messageMe(window.location.href)','label':'Press E to send me a message'}" as icon %}{{ icon|safe }}
+                {% render_icon "{'icon':'fa-dice','id':'random-article','click':'randomArticle()','label':'Press A for a random article'}" as icon %}{{ icon|safe }}
+                {% render_icon "{'icon':'fa-comment-slash','id':'tooltips','click':'noTooltips()','label':'Press H to disable these tooltips'}" as icon %}{{ icon|safe }}
+
+            {% block t_panels %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+    
+    {% block page_js %}
+    {% endblock %}
+
+    {% block has_email %}
+        <script src="https://smtpjs.com/v3/smtp.js" defer async></script>
+    {% endblock %}
+
+    {% block has_stripe %}
+    {% endblock %}
+
+    {% block has_video %}
+    {% endblock %}
+    
+</body>
+
+</html>

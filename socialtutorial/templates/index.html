@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block code_theme %}
+{% load static %}
+{% load set_color_theme %}
+{% set_code_theme "Dark Violet" as page_code_theme %}
+<link rel="stylesheet" href="{% static page_code_theme %}">
+
+{% load html_template %}
+{% use_template "basic" as css_template %}
+<link rel="stylesheet" href="{% static css_template %}">
+{% endblock %}
+
+{% block has_stripe %}
+{% endblock %}
+
+{% block has_email %}
+{% endblock %}
+
+{% block title %}Home page{% endblock %}
+
+{% block small_header %}
+{% endblock %}
+
+{% block n_panels %}
+  <div class="n-panel" onmouseenter="secretPanel(0)">
+    <div class="n-panel-top">
+      <p class="n-panel-title">Credits</p>
+    </div>
+    <div class="content" style="padding:.75rem;">
+      <p>Animated SVG header on this page is by Goodkatz: <a href="https://github.com/Goodkatz/simple-css-waves">view
+          on GitHub</a></p>
+          <p>SVG backgrounds from <a href = "https://www.bgjar.com">bgjar</a></p>
+      <p>Josh Comeau taught me about prettier gradients: <a
+          href="https://www.joshwcomeau.com/css/make-beautiful-gradients/">Josh's gradient maker</a></p>
+      <p><em>He's a <b>fantastic</b> educator and developer, you should absolutely check him out</em></p>
+      <p>This site uses a <a href="/dark-mode-in-bulma">(modified)</a> version of <a href="https://www.bulma.io">Bulma</a>
+      </p>
+      <p>Automatic date conversion by <a href="https://github.com/hustcc/timeago.js">timeago.js</a>, it's one of the
+        first things I add on every site I make. I highly recommend it.</p>
+      <p>All footer logos are trademarks of their respective owners.</p>
+      <a class="button secondary" href="/how-i-made-this-site-part-1">More information</a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  {% load created_at_dt %}
+  {% replace_date featured1.created_at as dt1 %}
+  {% replace_date featured2.created_at as dt2 %}
+  {% replace_date featured3.created_at as dt3 %}
+  <div class = "curves3">
+    <div class="columns no-margin">
+      <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
+        <div class="section">
+          <div class="container">
+            <div class="tile is-ancestor">
+              <div class="tile is-4 is-vertical is-parent">
+                <a href="{{ featured2.get_absolute_url }}" class="tile is-child">
+                  <div class="article-card">
+                    <div class="article-card-content">
+                      <div class="article-tags small-article-tags">
+                        <div class="article-card-title-area">
+                          <h2 class="article-card-title">{{ featured2.title }}</h2>
+                          <h3 class="article-card-title subtitle timeago" datetime="{{dt2}}"></h3>
+                        </div>
+                        <div class = "tags" style = "max-width:60%;justify-content: flex-end;">
+                          {% for tag in featured2.tags.all %}
+                          <p class="t">{{tag.display}}</p>
+                          {% endfor %}
+                          {% for tag in featured2.supertags.all %}
+                          <p class="t">{{tag.display}}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-image">
+                      <figure class="image">
+                        <img src="{{featured2.meta_image.url}}" alt="Image description: {{featured2.meta_image_alt}}">
+                      </figure>
+                    </div>
+                  </div>
+                </a>
+                <a href="{{ featured3.get_absolute_url }}" class="tile is-child">
+                  <div class="article-card">
+                    <div class="article-card-content">
+                      <div class="article-tags small-article-tags">
+                        <div class="article-card-title-area">
+                          <h2 class="article-card-title">{{ featured3.title }}</h2>
+                          <h3 class="article-card-title subtitle timeago" datetime="{{dt3}}"></h3>
+                        </div>
+                        <div class = "tags" style = "max-width:60%;justify-content: flex-end;">
+                          {% for tag in featured3.tags.all %}
+                          <p class="t">{{tag.display}}</p>
+                          {% endfor %}
+                          {% for tag in featured3.supertags.all %}
+                          <p class="t">{{tag.display}}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-image">
+                      <figure class="image">
+                        <img src="{{featured3.meta_image.url}}" alt="Image description: {{featured3.meta_image_alt}}">
+                      </figure>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="tile is-8 is-parent">
+                <a href="{{ featured1.get_absolute_url }}" class="tile is-child">
+                  <div class="article-card">
+                    <div class="article-card-content">
+                      <div class="article-tags">
+                        <div class="article-card-title-area">
+                          <h2 class="article-card-title">{{ featured1.title }}</h2>
+                          <h3 class="article-card-title subtitle timeago" datetime="{{dt1}}"></h3>
+                        </div>
+                        <div class = "tags" style = "max-width:35%;justify-content: flex-end;">
+                          {% for tag in featured1.tags.all %}
+                          <p class="t">{{tag.display}}</p>
+                          {% endfor %}
+                          {% for tag in featured1.supertags.all %}
+                          <p class="t">{{tag.display}}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-image">
+                      <figure class="image">
+                        <img src="{{featured1.meta_image.url}}" alt="Image description: {{featured1.meta_image_alt}}">
+                      </figure>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns no-margin" style = "margin-top:-8rem;">
+      <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
+        <div class="section">
+          <div class="container">
+            <div class="level is mobile">
+              <div class="level-left">
+                <div class="level-item">
+                  <h2>Recent Articles</h2>
+                </div>
+              </div>
+              <div class="level-right is-hidden-mobile">
+                <div class="level-item">
+                  <h2>Featured Videos</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="columns">
+              <div class="column is-8">
+                {% for article in articles  %}
+                {% load render_article %}
+                {% load article_snippet %}
+                {% load created_at_dt %}
+                {% if article.published %}
+                {% make_snippet article.body as snippet %}
+                {% render_article snippet as body_text %}
+                {% replace_date article.created_at as dt %}
+                <a href="{{ article.get_absolute_url }}">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="level no-margin">
+                        <div class="level-left">
+                          <div class="level-item">
+                            <h3>{{article.title}}</h3>
+                          </div>
+                        </div>
+                        <div class="level-right">
+                          <div class="level-item">
+                            <h4 class="subtitle timeago" datetime="{{dt}}"></h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="level no-margin">
+                        <div class="level-left">
+                          <div class="level-item">
+                            <p style="color:var(--main-text)">{{body_text}}</p>
+                          </div>
+                        </div>
+                        <div class="level-right">
+                          <div class="level-item">
+                            <div class = "tags" style = "justify-content: flex-end;">
+                              {% for tag in article.tags.all %}
+                              <p class="t is-small">{{tag.display}}</p>
+                              {% endfor %}
+                              {% for tag in article.supertags.all %}
+                              <p class="t is-small">{{tag.display}}</p>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="spacer is-medium"></div>
+                </a>
+                {% endif %}
+                {% endfor %}
+                <a class="button big-button primary" href="/articles">MORE</a>
+              </div>
+
+              <div class="column is-3 is-offset-1">
+                <h2 class="is-hidden-desktop is-hidden-tablet" style="text-align:center;">Featured Videos</h2>
+                <div class = "videos">
+                  {% for featured_video in featured_videos %}
+                    <div class="video-container">
+                      <iframe src="{{ featured_video.url }}" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </div>
+                  {% endfor %}
+                </div>
+
+                <h2 style="text-align:right;margin-top:3rem;margin-bottom:1rem;">CATEGORIES</h2>
+                <div class="tags are-medium dark">
+                  {% for tag in tags %}
+                      <a href="{{ tag.get_absolute_url }}"><span class="tag is-clickable is-unselectable secondary">{{tag.display}}</span></a>
+                  {% endfor %}
+              </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
