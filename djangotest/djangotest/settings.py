@@ -27,21 +27,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bjq*tmx)cgpab-g=chz(sd%)s+fe!2-&c9@mb!=@yjxh_%r&8p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 import os
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 INTERNAL_IPS = [
     '127.0.0.1',
     ]
 
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+DEBUG = os.getenv("DEBUG", "False") == "True"
 # Application definition
 
 SITE_ID = 1
@@ -160,9 +160,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51KYZy7G9WYbxV12nHt1EZ7zNnt7mbgWToLx7CNFTbinzGzsmbdiFi1AbsBJmo0OQ9R0UfScjVmightLrduVWBGEU008h4EsnGW'
-STRIPE_SECRET_KEY = 'sk_test_51KYZy7G9WYbxV12nyFQ99TcBj0uaOQOGwvqgyFCamuBgXtbDp9Vnlwv5CjCD1aiZ17tr39AIAieyV5tW5KO7osvp00BaGK9VXR'
-
 BLACKLIST_TEMPLATE = "blacklist.html"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -172,3 +169,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
+SECRET_KEY = env('SECRET_KEY')
