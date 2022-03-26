@@ -186,9 +186,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'collected-static'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
