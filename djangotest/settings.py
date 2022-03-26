@@ -49,7 +49,7 @@ AWS_S3_ENDPOINT_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
-DEFAULT_FILE_STORAGE = 'rn_api.utils.storage_backends.PublicMediaStorage'
+DEFAULT_FILE_STORAGE = 'djangotest.storage_backends.PublicMediaStorage'
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
