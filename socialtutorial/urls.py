@@ -1,6 +1,6 @@
 # dwitter/urls.py
 
-from django.urls import path, include
+from django.urls import path, include, re_path
 from .views import (dashboard, test, old_admin, page_not_found, article_random,
 ArticleView, ArticleList, TagView, ContactView, ContactSuccessView, ProductView,
 KeyValidatorView, PurchaseView, SuperTagView)
@@ -39,6 +39,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, # new
         {'sitemaps': {'socialtutorial': GenericSitemap(info_dict, priority=0.6)}},
         name='django.contrib.sitemaps.views.sitemap'),
+    re_path(r'^robots\.txt', include('robots.urls')),
 ]
 
 urlpatterns += [
