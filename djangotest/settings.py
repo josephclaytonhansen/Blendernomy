@@ -63,7 +63,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 DEBUG = os.getenv("DEBUG", "False") == "True"
 # Application definition
 
-SITE_ID = 1
+SITE_ID = 0
 
 INSTALLED_APPS = [
     'django.contrib.admin',
