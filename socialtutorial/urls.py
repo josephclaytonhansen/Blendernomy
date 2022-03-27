@@ -37,7 +37,7 @@ urlpatterns = [
     path('contact_success', ContactSuccessView.as_view(), name="success"),
     path('key_validation', KeyValidatorView, name="key_validation"),
     path('sitemap.xml', sitemap, # new
-        {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},
+        {'sitemaps': {'socialtutorial': GenericSitemap(info_dict, priority=0.6)}},
         name='django.contrib.sitemaps.views.sitemap'),
 ]
 
