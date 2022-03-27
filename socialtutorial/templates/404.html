@@ -24,12 +24,17 @@
 {% block header_title %}Page not found{% endblock %}
 
 {% block content %}
-    <div class="section">
-        <div class="content">
-            <p>This page could not be found.<p>
+<div class = "curves4">
+    <div class="columns no-margin">
+      <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
+        <div class="section">
+          <div class="container">
+              <p>No page found!</p>
+              <a class = "button primary big-button" onclick="home()">HOME</a>
+          </div>
         </div>
-         <a class="button is-primary" href="/index">Home</a>
     </div>
+</div>
     {% block secret_panels %}
     {% endblock %}
 {% endblock content %}
