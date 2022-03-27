@@ -4,11 +4,18 @@ from django.urls import path, include
 from .views import (dashboard, test, old_admin, page_not_found, article_random,
 ArticleView, ArticleList, TagView, ContactView, ContactSuccessView, ProductView,
 KeyValidatorView, PurchaseView, SuperTagView)
+from .models import Article
 from django.conf.urls import handler404
 from django.contrib.staticfiles.urls import static
 from django.conf import settings
+from django.contrib.sitemaps import GenericSitemap # new
+from django.contrib.sitemaps.views import sitemap # new
 
 app_name = "socialtutorial"
+
+info_dict = {
+    'queryset': Article.objects.all(),
+}
 
 urlpatterns = [
     path("", dashboard, name="dashboard"),
@@ -29,6 +36,9 @@ urlpatterns = [
     path('contact', ContactView.as_view(), name="contact"),
     path('contact_success', ContactSuccessView.as_view(), name="success"),
     path('key_validation', KeyValidatorView, name="key_validation"),
+    path('sitemap.xml', sitemap, # new
+        {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},
+        name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 urlpatterns += [
