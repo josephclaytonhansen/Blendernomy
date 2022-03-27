@@ -63,8 +63,6 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 DEBUG = os.getenv("DEBUG", "False") == "True"
 # Application definition
 
-SITE_ID = 0
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,6 +84,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'storages',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
