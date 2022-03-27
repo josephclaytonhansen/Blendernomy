@@ -83,7 +83,6 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'whitenoise.runserver_nostatic',
     'storages',
-    'robots',
 ]
 
 SITE_ID = 2

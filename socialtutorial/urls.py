@@ -39,7 +39,6 @@ urlpatterns = [
     path('sitemap.xml', sitemap, # new
         {'sitemaps': {'socialtutorial': GenericSitemap(info_dict, priority=0.6)}},
         name='django.contrib.sitemaps.views.sitemap'),
-    re_path(r'^robots\.txt', include('robots.urls')),
 ]
 
 urlpatterns += [
