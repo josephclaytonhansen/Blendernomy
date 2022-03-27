@@ -4,6 +4,7 @@ from django.urls import path, include, re_path
 from .views import (dashboard, test, old_admin, page_not_found, article_random,
 ArticleView, ArticleList, TagView, ContactView, ContactSuccessView, ProductView,
 KeyValidatorView, PurchaseView, SuperTagView)
+from django.views.generic.base import TemplateView
 from .models import Article
 from django.conf.urls import handler404
 from django.contrib.staticfiles.urls import static
@@ -39,6 +40,10 @@ urlpatterns = [
     path('sitemap.xml', sitemap, # new
         {'sitemaps': {'socialtutorial': GenericSitemap(info_dict, priority=0.6)}},
         name='django.contrib.sitemaps.views.sitemap'),
+     path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 ]
 
 urlpatterns += [
