@@ -761,4 +761,5 @@ figure{
 .figcon{
     display:flex;
     margin-bottom:1rem;
+    flex-wrap:nowrap;
 }
