@@ -122,10 +122,10 @@ class Article(models.Model):
     featured_on_tag_page = models.BooleanField(default=False)
     views = models.PositiveIntegerField(default=0)
     meta_author = models.CharField(max_length=50, blank=True, default='Joseph Hansen')
-    meta_description = models.CharField(max_length=160)
+    meta_description = models.CharField(max_length=300)
     meta_keywords = models.CharField(max_length=300, blank=True, default='')
 
-    meta_url = models.CharField(max_length=64, blank=True, default='')
+    meta_url = models.CharField(max_length=160, blank=True, default='')
     meta_site = models.CharField(max_length=64, default='Blendernomy')
     meta_image = models.FileField(upload_to='media/uploads/%Y/%m/%d/', blank=True, default='')
     meta_image_alt = models.CharField(max_length=300, blank=True, default='')
