@@ -747,3 +747,9 @@ footer {
     font-weight: 500;
     min-width:70px;
 }
+
+figcaption{
+    font-size:.7rem;
+    color:var(--main-text-light);
+    font-style:italic;
+}
