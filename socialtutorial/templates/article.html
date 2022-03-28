@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 
-{% load combine_keywords %}
-{% get_keywords object as keywords %}
-
 {% block meta_author %}'{{object.meta_author}}'{% endblock %}
 {% block meta_description %}'{{object.meta_description}}'{% endblock %}
-{% block meta_keywords %}'{{keywords}}'{% endblock %}
+{% block meta_keywords %}'{% load combine_keywords %}
+{% get_keywords object as keywords %}{{keywords}}'{% endblock %}
 
 {% block meta_og_url %}'{{object.meta_url}}'{% endblock %}
 {% block meta_og_title %}'{{object.title}}'{% endblock %}
