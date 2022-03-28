@@ -753,3 +753,12 @@ figcaption{
     color:var(--main-text-light);
     font-style:italic;
 }
+
+figure{
+    margin-top:.5rem;
+}
+
+.figcon{
+    display:flex;
+    margin-bottom:1rem;
+}
