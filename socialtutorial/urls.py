@@ -11,7 +11,7 @@ from django.contrib.staticfiles.urls import static
 from django.conf import settings
 from django.contrib.sitemaps import GenericSitemap # new
 from django.contrib.sitemaps.views import sitemap # new
-from .sitemaps import StaticViewSitemap, ArticleSitemap
+from .sitemaps import ArticleSitemap
 
 app_name = "socialtutorial"
 
@@ -20,7 +20,6 @@ info_dict = {
 }
 
 sitemaps = {
-    'static':StaticViewSitemap,
     'articles':ArticleSitemap,
 }
 
