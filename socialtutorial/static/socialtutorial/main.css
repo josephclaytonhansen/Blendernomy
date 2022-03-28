@@ -749,7 +749,7 @@ footer {
 }
 
 figcaption{
-    font-size:.7rem;
+    font-size:.9rem;
     color:var(--main-text-light);
     font-style:italic;
 }
