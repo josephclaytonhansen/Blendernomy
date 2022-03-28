@@ -11,11 +11,17 @@ from django.contrib.staticfiles.urls import static
 from django.conf import settings
 from django.contrib.sitemaps import GenericSitemap # new
 from django.contrib.sitemaps.views import sitemap # new
+from .sitemaps import StaticViewSitemap, ArticleSitemap
 
 app_name = "socialtutorial"
 
 info_dict = {
     'queryset': Article.objects.all(),
+}
+
+sitemaps = {
+    'static':StaticViewSitemap,
+    'articles':ArticleSitemap,
 }
 
 urlpatterns = [
@@ -38,7 +44,7 @@ urlpatterns = [
     path('contact_success', ContactSuccessView.as_view(), name="success"),
     path('key_validation', KeyValidatorView, name="key_validation"),
     path('sitemap.xml', sitemap, # new
-        {'sitemaps': {'socialtutorial': GenericSitemap(info_dict, priority=0.6)}},
+        {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
      path(
         "robots.txt",
