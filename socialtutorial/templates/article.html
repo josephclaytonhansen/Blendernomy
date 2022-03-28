@@ -9,10 +9,10 @@
 {% block meta_og_title %}'{{object.title}}'{% endblock %}
 {% block meta_og_description %}'{{object.meta_description}}'{% endblock %}
 {% block meta_og_site %}'{{object.meta_url}}'{% endblock %}
-{% block meta_og_image %}'{{object.meta_image}}'{% endblock %}
+{% block meta_og_image %}'{{object.meta_image.url}}'{% endblock %}
 {% block meta_og_imagealt %}'{{object.meta_description}}'{% endblock %}
 
-{% block meta_twitter_image %}'{{object.meta_image}}'{% endblock %}
+{% block meta_twitter_image %}'{{object.meta_image.url}}'{% endblock %}
 {% block meta_twitter_imagealt %}'{{object.meta_description}}'{% endblock %}
 {% block meta_twitter_site %}'{{object.meta_twitter}}'{% endblock %}
 {% block meta_twitter_creator %}'{{object.meta_twitter}}'{% endblock %}
