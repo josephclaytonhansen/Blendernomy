@@ -185,8 +185,9 @@
                         </div>
                       </div>
 
-                          <div class = "content">
+                          <div class = "">
                             <p style="color:var(--main-text)">{{body_text}}</p>
+                            <img class = "image" src = {{article.meta_image.url}}>
                           
                             <div class = "tags" style = "justify-content: flex-end;">
                               {% for tag in article.tags.all %}
