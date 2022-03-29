@@ -326,7 +326,11 @@ a.button {
 }
 
 #lightfooter {
-    background-color: #cccccc !important;
+    background-color: #a8a8a8 !important;
+}
+
+#lightfooter a{
+    color: #eee!important;
 }
 
 footer {
