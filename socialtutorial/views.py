@@ -25,7 +25,8 @@ def dashboard(request):
                    "featured2":featured_articles[1],
                    "featured3":featured_articles[2],
                    "featured_videos":FeaturedVideo.objects.all()[0:2],
-                   "tags":list(Tag.objects.all())}
+                   "tags":list(Tag.objects.all()),
+                   "supertags":list(SuperTag.objects.all())}
                   )
 
 @ratelimit(key='ip', rate = '30/m', block=False)
