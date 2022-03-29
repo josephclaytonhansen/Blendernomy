@@ -772,3 +772,8 @@ figure {
     margin-bottom: 1rem;
     flex-wrap: nowrap;
 }
+
+.table{
+    border-radius: .25rem;
+    box-shadow: var(--gentle-shadow);
+}
