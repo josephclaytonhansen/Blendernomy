@@ -110,3 +110,7 @@ function twitter(){
 function email(){
     window.location.href = "mailto:?body="+window.location.href;
 }
+
+function openModal(){
+    document.getElementsByClassName('modal')[0].classList.toggle('is-active');
+}
