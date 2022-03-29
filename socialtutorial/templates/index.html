@@ -184,14 +184,10 @@
                           </div>
                         </div>
                       </div>
-                      <div class="level no-margin">
-                        <div class="level-left">
-                          <div class="level-item">
+
+                          <div class = "content">
                             <p style="color:var(--main-text)">{{body_text}}</p>
-                          </div>
-                        </div>
-                        <div class="level-right">
-                          <div class="level-item">
+                          
                             <div class = "tags" style = "justify-content: flex-end;">
                               {% for tag in article.tags.all %}
                               <p class="t is-small">{{tag.display}}</p>
@@ -200,9 +196,9 @@
                               <p class="t is-small">{{tag.display}}</p>
                               {% endfor %}
                             </div>
+                          
                           </div>
-                        </div>
-                      </div>
+
                     </div>
                   </div>
                   <div class="spacer is-medium"></div>
