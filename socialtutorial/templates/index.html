@@ -51,7 +51,7 @@
   {% replace_date featured3.created_at as dt3 %}
   <div class = "curves3">
     <div class="columns no-margin">
-      <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
+      <div class="column is-10 is-offset-1 is-full-tablet is-full-mobile">
         <div class="section">
           <div class="container">
             <div class="tile is-ancestor">
@@ -187,7 +187,7 @@
 
                           <div class = "">
                             <p style="color:var(--main-text)">{{body_text}}</p>
-                            <img class = "image" src = {{article.meta_image.url}}>
+                            <img class = "image" src = {{article.meta_image.url}} style = "max-width:200px;">
                           
                             <div class = "tags" style = "justify-content: flex-end;">
                               {% for tag in article.tags.all %}
