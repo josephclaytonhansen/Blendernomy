@@ -49,10 +49,10 @@
                 </a>
 
             </div>
-            {% if article.video|length > 1 %}
+            {% if article.video is not '' %}
                 <div class = "share-buttons" style = "margin-top:10px;position: fixed; top: 60px;right:190x;">
                     <a class = "button primary" style = "color:white;" href="{{ article.video }}">
-                        </span><span style = "padding-left:4px;">Watch video version</span>
+                        </span><span style = "padding-left:4px;">Watch video version {{article.video|length}}</span>
                     </a>
                 </div>
             {% endif %}
