@@ -50,9 +50,9 @@
 
             </div>
             {% if article.video is not '' %}
-                <div class = "share-buttons" style = "margin-top:10px;position: fixed; top: 20px;right:206px;">
-                    <a class = "button primary" style = "color:white;" href="{{article.video}}">
-                        </span><span style = "padding-left:4px;">Watch video version</span>
+                <div class = "share-buttons" style = "margin-top:10px;position: fixed; top: 40px;right:206px;">
+                    <a class = "button primary" style = "color:white;" href="{{ article.video }}">
+                        </span><span style = "padding-left:4px;">Watch video version{{ article.video }}</span>
                     </a>
                 </div>
             {% endif %}
