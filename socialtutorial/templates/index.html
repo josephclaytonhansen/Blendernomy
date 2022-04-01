@@ -49,8 +49,8 @@
   {% replace_date featured1.created_at as dt1 %}
   {% replace_date featured2.created_at as dt2 %}
   {% replace_date featured3.created_at as dt3 %}
-  <div class = "curves3 is-hidden-mobile">
-    <div class="columns no-margin">
+  <div class = "curves3">
+    <div class="columns no-margin is-hidden-mobile">
       <div class="column is-8 is-offset-2 is-full-tablet is-full-mobile">
         <div class="section">
           <div class="container">
@@ -139,6 +139,56 @@
             <div class="spacer"></div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class = "columns no-margin is-hidden-desktop is-hidden-tablet">
+      <div class="column is-10">
+        {% for article in featured  %}
+        {% load render_article %}
+        {% load article_snippet %}
+        {% load created_at_dt %}
+        {% if article.published %}
+        {% make_snippet article.body as snippet %}
+        {% render_article snippet as body_text %}
+        {% replace_date article.created_at as dt %}
+        <a href="{{ article.get_absolute_url }}">
+          <div class="card">
+            <div class="card-content">
+              <div class="level no-margin">
+                <div class="level-left">
+                  <div class="level-item">
+                    <h3>{{article.title}}</h3>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <h4 class="subtitle timeago" datetime="{{dt}}"></h4>
+                  </div>
+                </div>
+              </div>
+
+                  <div class = "">
+                    <p style="color:var(--main-text)">{{body_text}}</p>
+                    <img class = "image" src = {{article.meta_image.url}} style = "max-width:200px;">
+                  
+                    <div class = "tags" style = "justify-content: flex-end;">
+                      {% for tag in article.tags.all %}
+                      <p class="t is-small">{{tag.display}}</p>
+                      {% endfor %}
+                      {% for tag in article.supertags.all %}
+                      <p class="t is-small">{{tag.display}}</p>
+                      {% endfor %}
+                    </div>
+                  
+                  </div>
+
+            </div>
+          </div>
+          <div class="spacer is-medium"></div>
+        </a>
+        {% endif %}
+        {% endfor %}
       </div>
     </div>
 
