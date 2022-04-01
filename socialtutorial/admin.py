@@ -35,7 +35,7 @@ def unfeature(modeladmin, request, queryset):
 class ArticleAdmin(admin.ModelAdmin):
     model = Article
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ('title', 'featured_on_home_page', 'featured_on_tag_page', 'published', "slug")
+    list_display = ('title', 'featured_on_home_page', 'featured_on_tag_page', 'published', "slug", "views")
     list_editable = ('featured_on_home_page', 'featured_on_tag_page', 'published')
     list_display_links = ('title',)
     def get_changeform_initial_data(self, request):

@@ -24,6 +24,7 @@ def dashboard(request):
                    "featured1":featured_articles[0],
                    "featured2":featured_articles[1],
                    "featured3":featured_articles[2],
+                   "featured":featured_articles,
                    "featured_videos":FeaturedVideo.objects.all()[0:2],
                    "tags":list(Tag.objects.all()),
                    "supertags":list(SuperTag.objects.all())}

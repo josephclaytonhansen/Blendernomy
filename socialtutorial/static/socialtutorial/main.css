@@ -671,6 +671,10 @@ footer {
         max-width: 80vw;
         margin: auto;
     }
+
+    .home-tiles {
+        display:none;
+    }
 }
 
 .vertical-center-left {
