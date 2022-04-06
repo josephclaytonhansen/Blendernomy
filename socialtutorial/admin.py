@@ -22,10 +22,6 @@ def unpublish(modeladmin, request, queryset):
 @admin.action(description='Feature (home page)')    
 def feature_home(modeladmin, request, queryset):
     queryset.update(featured_on_home_page=True)
-    
-@admin.action(description='Feature (tag page)')    
-def feature_tag(modeladmin, request, queryset):
-    queryset.update(featured_on_tag_page=True)
 
 @admin.action(description='Unfeature')    
 def unfeature(modeladmin, request, queryset):
@@ -35,12 +31,12 @@ def unfeature(modeladmin, request, queryset):
 class ArticleAdmin(admin.ModelAdmin):
     model = Article
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ('title', 'featured_on_home_page', 'featured_on_tag_page', 'published', "slug", "views")
-    list_editable = ('featured_on_home_page', 'featured_on_tag_page', 'published')
+    list_display = ('title', 'featured_on_home_page', 'cta', 'published', "slug", "views")
+    list_editable = ('featured_on_home_page', 'published')
     list_display_links = ('title',)
     def get_changeform_initial_data(self, request):
         return {'user': User.objects.all()[0]}
-    actions = [publish, unpublish, feature_home, feature_tag, unfeature]
+    actions = [publish, unpublish, feature_home, unfeature]
 
 class CtaAdmin(admin.ModelAdmin):
     model = CTA
