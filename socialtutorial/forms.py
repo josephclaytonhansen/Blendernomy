@@ -75,8 +75,16 @@ class ContactForm(forms.Form):
         msg = f'{name} with email {from_email} said:'
         msg += f'\n"{subject}"\n\n'
         msg += cl_data.get('message')
-
-        return subject, msg
+        
+        spam_names = ["HenryjiP"]
+        spam = False
+        for n in spam_names:
+            if n in name:
+                spam = True
+        if not spam:
+            return subject, msg
+        else:
+            return 0,0
 
     def send(self):
 
@@ -86,12 +94,12 @@ class ContactForm(forms.Form):
         #key,created = ProductKey.objects.get_or_create( email=b, key=q)
         #msg = msg + q
 
-        
-        send_mail(
-            subject=subject,
-            message=msg,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[settings.RECIPIENT_ADDRESS]
-        )
+        if subject != 0 and msg != 0:
+            send_mail(
+                subject=subject,
+                message=msg,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.RECIPIENT_ADDRESS]
+            )
         
         
