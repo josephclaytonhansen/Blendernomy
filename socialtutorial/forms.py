@@ -3,7 +3,6 @@ from django.conf import settings
 from django.core.mail import send_mail
 import environ, re
 from .models import ProductKey
-from captcha.fields import CaptchaField
 
 def frog(b):
     env = environ.Env()
@@ -54,7 +53,6 @@ class KeyValidator(forms.Form):
     email = forms.EmailField()
    
 class ContactForm(forms.Form):
-    captcha = CaptchaField()
     name = forms.CharField(max_length=120)
     email = forms.EmailField()
     subject = forms.CharField(max_length=70)
