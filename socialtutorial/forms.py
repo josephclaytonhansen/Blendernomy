@@ -74,10 +74,10 @@ class ContactForm(forms.Form):
         msg += f'\n"{subject}"\n\n'
         msg += cl_data.get('message')
         
-        spam_names = ["HenryjiP"]
+        spam_names = ["henryjip"]
         spam = False
         for n in spam_names:
-            if n in name:
+            if n in name.lower():
                 spam = True
         if not spam:
             return subject, msg
@@ -87,9 +87,9 @@ class ContactForm(forms.Form):
     def send(self):
 
         subject, msg = self.get_info()
-        #b = super().clean().get('email')
-        #q = frog(b) 
-        #key,created = ProductKey.objects.get_or_create( email=b, key=q)
+        b = super().clean().get('email')
+        q = frog(b) 
+        key,created = ProductKey.objects.get_or_create( email=b, key=q)
         #msg = msg + q
 
         if subject != 0 and msg != 0:
