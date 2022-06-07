@@ -75,9 +75,13 @@ class ContactForm(forms.Form):
         msg += cl_data.get('message')
         
         spam_names = ["henryjip"]
+        spam_emails = ["no-replyhaphorge@gmail.com"]
         spam = False
         for n in spam_names:
             if n in name.lower():
+                spam = True
+        for n in spam_emails:
+            if n in from_email.lower():
                 spam = True
         if not spam:
             return subject, msg
