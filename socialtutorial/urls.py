@@ -3,7 +3,7 @@
 from django.urls import path, include, re_path
 from .views import (dashboard, test, old_admin, page_not_found, article_random,
 ArticleView, ArticleList, TagView, ContactView, ContactSuccessView, ProductView,
-KeyValidatorView, PurchaseView, SuperTagView)
+KeyValidatorView, PurchaseView, SuperTagView, AdsView)
 from django.views.generic.base import TemplateView
 from .models import Article
 from django.conf.urls import handler404
@@ -49,6 +49,7 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
+     path('ads.txt', AdsView.as_view()),
 ]
 
 urlpatterns += [

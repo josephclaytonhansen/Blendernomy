@@ -7,6 +7,13 @@ from datetime import timedelta
 from blacklist.ratelimit import blacklist_ratelimited
 from .forms import ContactForm, KeyValidator, frog
 from django.urls import reverse_lazy
+from django.http import HttpResponse
+
+class AdsView(View):
+    """Replace pub-0000000000000000 with your own publisher ID"""
+    line  =  "google.com, pub-8723850115651171, DIRECT, f08c47fec0942fa0"
+    def get(self, request, *args, **kwargs):
+        return HttpResponse(line)
 
 # Create your views here.
 def page_not_found(request, exception):
