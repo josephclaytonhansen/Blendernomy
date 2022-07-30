@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView, FormView, TemplateView
+from django.views import View
 from django.utils.decorators import method_decorator
 from .models import Article, DigitalProduct, Tag, ProductKey, FeaturedVideo, SuperTag
 from ratelimit.decorators import ratelimit
